@@ -25,28 +25,27 @@ class SearchResultClass:
             self.results.append(self.instaniateSearchResult(result))
 
     def instaniateSearchResult(self, content):
-        zpid = content.zpid
-        homeDetailsLink=content.links.homedetails
-        mapThisHomeLink=content.links.mapethishome
-        comparablesLink=content.links.comparable
-        streetAddress=content.address.street
-        zipcodeAddress=content.address.zipcode
-        cityAddress=content.address.city
-        stateAddress=content.address.state
-        latitudeAddress=content.address.latitude
-        longitudeAddress=content.address.longitude
-        amount=content.zestimate.amount
-        # lastUpdated = content.zestimate.last-updated
-        lastUpdated = content.find('last-updated')
-        valueChange=content.zestimate.valueChange
-        lowValuationRange=content.zestimate.valuationRange.low
-        highValuationRange=content.zestimate.valuationRange.high
+        zpid = content.zpid.string
+        homeDetailsLink=content.links.homedetails.string
+        mapThisHomeLink=content.links.mapthishome.string
+        comparablesLink=content.links.comparables.string
+        streetAddress=content.address.street.string
+        zipcodeAddress=content.address.zipcode.string
+        cityAddress=content.address.city.string
+        stateAddress=content.address.state.string
+        latitudeAddress=content.address.latitude.string
+        longitudeAddress=content.address.longitude.string
+        amount=content.zestimate.amount.string
+        lastUpdated = content.find('last-updated').string
+        valueChange=content.zestimate.valueChange.string
+        lowValuationRange=content.zestimate.valuationRange.low.string
+        highValuationRange=content.zestimate.valuationRange.high.string
         regionName=content.localRealEstate.region['name']
         regionId=content.localRealEstate.region['id']
         regionType=content.localRealEstate.region['type']
-        zIndexValue=content.localRealEstate.region.zindexValue
-        localRealEstateOverviewLinks=content.localRealEstate.region.links.overview
-        localRealEstateForSaleByOwnerLinks=content.localRealEstate.region.links.forSaleByOwner
-        localRealEstateForSaleLinks=content.localRealEstate.region.links.forSale
+        zIndexValue=content.localRealEstate.region.zindexValue.string
+        localRealEstateOverviewLinks=content.localRealEstate.region.links.overview.string
+        localRealEstateForSaleByOwnerLinks=content.localRealEstate.region.links.forSaleByOwner.string
+        localRealEstateForSaleLinks=content.localRealEstate.region.links.forSale.string
 
         return SearchResults(zpid, homeDetailsLink, mapThisHomeLink,comparablesLink,streetAddress,zipcodeAddress, cityAddress, stateAddress, latitudeAddress, longitudeAddress, amount, lastUpdated, valueChange, lowValuationRange, highValuationRange, regionName, regionId, regionType, zIndexValue, localRealEstateOverviewLinks, localRealEstateForSaleByOwnerLinks, localRealEstateForSaleLinks)
