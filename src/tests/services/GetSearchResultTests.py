@@ -15,7 +15,6 @@ def mocked_requests_get(self, *args, **kwargs):
         return MockResponse(self.getTestObject())
     return MockResponse(None)
 
-
 class getResultsTests(TestCase):
     @patch('src.main.services.zillow.GetSearchResults.requests.get', side_effect=mocked_requests_get)
     def test_get(self, mock_get):
