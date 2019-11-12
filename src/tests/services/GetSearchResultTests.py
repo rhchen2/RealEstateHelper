@@ -1,23 +1,22 @@
-from unittest.mock import Mock ,patch
+from unittest import TestCase
+from unittest.mock import patch
 
-from unittest import TestCase, mock
-
+import src.main.services.zillow.GetSearchResults as GSR
 from src.main.classes.SearchResultClass import SearchResultClass
 from src.main.classes.SearchResults import SearchResults
-import src.main.services.zillow.GetSearchResults as GSR
 
 
 def mocked_requests_get(self, *args, **kwargs):
     class MockResponse:
-        def __init__(self, sResult, status_code):
+        def __init__(self, sResult):
             self.sResult = sResult
 
     if args[0] == 'https://ZillowdimashirokovV1.p.rapidapi.com/GetSearchResults.htm':
-        return MockResponse(self.getTestObject(), 200)
-        # return MockResponse("hello",200)
-    return MockResponse(None, 404)
+        return MockResponse(self.getTestObject())
+    return MockResponse(None)
 
-class  getResultsTests(TestCase):
+
+class getResultsTests(TestCase):
     @patch('src.main.services.zillow.GetSearchResults.requests.get', side_effect=mocked_requests_get)
     def test_get(self, mock_get):
         zwsid = "X1-ZWz17jvxcowwln_7lwvq",
@@ -31,7 +30,7 @@ class  getResultsTests(TestCase):
         params = {
             "zws-id": zwsid,
             "citystatezip": citystatezip,
-            "address":address
+            "address": address
         }
 
         results = GSR.getSearchResults(params)
@@ -39,7 +38,6 @@ class  getResultsTests(TestCase):
         searchResult = sClass.xmlToClass(results)
 
         print(searchResult[0].zpid)
-
 
         assert searchResult[0].zpid == testResults.zpid
         assert searchResult[0].homeDetailsLink == testResults.homeDetailsLink
@@ -88,6 +86,8 @@ class  getResultsTests(TestCase):
         localRealEstateForSaleByOwnerLinks = "http://www.zillow.com/the-loop-chicago-il/fsbo/"
         localRealEstateForSaleLinks = "http://www.zillow.com/the-loop-chicago-il/"
 
-        return SearchResults(zpid, homeDetailsLink, mapThisHomeLink,comparablesLink,streetAddress,zipcodeAddress, cityAddress, stateAddress, latitudeAddress, longitudeAddress, amount, lastUpdated, valueChange, lowValuationRange, highValuationRange, regionName, regionId, regionType, zIndexValue, localRealEstateOverviewLinks, localRealEstateForSaleByOwnerLinks, localRealEstateForSaleLinks)
-
-
+        return SearchResults(zpid, homeDetailsLink, mapThisHomeLink, comparablesLink, streetAddress, zipcodeAddress,
+                             cityAddress, stateAddress, latitudeAddress, longitudeAddress, amount, lastUpdated,
+                             valueChange, lowValuationRange, highValuationRange, regionName, regionId, regionType,
+                             zIndexValue, localRealEstateOverviewLinks, localRealEstateForSaleByOwnerLinks,
+                             localRealEstateForSaleLinks)
