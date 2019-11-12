@@ -13,7 +13,4 @@ def getSearchResults(myParams):
       params=myParams
     )
 
-    print(response.content)
-
-    tree = ElementTree.fromstring(response.content)
-    # print (tree)
+    return response.content

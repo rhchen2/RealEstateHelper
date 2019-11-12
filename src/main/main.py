@@ -1,4 +1,4 @@
-from app import run
+from src.main.app import run
 
 def main():
   run()
