@@ -1,8 +1,9 @@
-from main.services.zillow.GetSearchResults import getSearchResults
-from main.classes.SearchResults import SearchResults
+from src.main.services.zillow.GetSearchResults import getSearchResults
+from src.main.classes.SearchResults import SearchResults
 from bs4 import BeautifulSoup
 
 class SearchResultClass:
+
     def __init__(self, zwsid, citystatezip, address):
         self.zwsid = zwsid
         self.citystatezip = citystatezip
@@ -16,14 +17,15 @@ class SearchResultClass:
         params["address"] = self.address
         getRequestResult = getSearchResults(params)
 
-        self.xmlToClass(getRequestResult)
+        self.results = self.xmlToClass(getRequestResult)
 
     def xmlToClass(self, xmlResult):
         contents = BeautifulSoup(xmlResult,'xml')
-        results = contents.find_all("results")
-        for result in results:
-            self.results.append(self.instaniateSearchResult(result))
-
+        findAllResults = contents.find_all("results")
+        results = []
+        for result in findAllResults:
+            results.append(self.instaniateSearchResult(result))
+        return results
     def instaniateSearchResult(self, content):
         zpid = content.zpid.string
         homeDetailsLink=content.links.homedetails.string
