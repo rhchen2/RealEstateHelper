@@ -1,4 +1,4 @@
-from src.main.services.zillow.GetSearchResults import getSearchResults
+from src.main.services.zillow.api import getSearchResults
 from src.main.classes.SearchResults import SearchResults
 from bs4 import BeautifulSoup
 
@@ -26,6 +26,7 @@ class SearchResultClass:
         for result in findAllResults:
             results.append(self.instaniateSearchResult(result))
         return results
+
     def instaniateSearchResult(self, content):
         zpid = content.zpid.string
         homeDetailsLink=content.links.homedetails.string
