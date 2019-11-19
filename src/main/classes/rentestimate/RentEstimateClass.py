@@ -4,7 +4,6 @@ from src.main.services.rentestimate.api import getRentEstimates
 import json
 
 class RentEstimateClass:
-
     def __init__(self):
         self.address = None
         self.bedrooms = None
