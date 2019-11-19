@@ -1,5 +1,5 @@
 from src.main.services.zillow.api import getSearchResults
-from src.main.classes.SearchResults import SearchResults
+from src.main.classes.zillow.ZillowSearchResults import SearchResults
 from bs4 import BeautifulSoup
 
 class SearchResultClass:

@@ -1,5 +1,9 @@
-from src.main.classes.SearchResultClass import SearchResultClass
+from src.main.classes.rentestimate.RentEstimateClass import RentEstimateClass
+from src.main.classes.zillow.ZillowSearchResultClass import SearchResultClass
+
 def run():
 
-    searchResult = SearchResultClass("X1-ZWz17jvxcowwln_7lwvq","60611","420 E Ohio St")
-    searchResult.getSearchResultsHelper()
+    rent = RentEstimateClass()
+    rent.address = "6168 Paseo Pueblo Dr, San Jose, CA"
+    rent.getRentEstimate()
+    rent.printShit()

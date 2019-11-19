@@ -22,9 +22,3 @@ class SearchResults:
         self.localRealEstateOverviewLinks=localRealEstateOverviewLinks
         self.localRealEstateForSaleByOwnerLinks=localRealEstateForSaleByOwnerLinks
         self.localRealEstateForSaleLinks=localRealEstateForSaleLinks
-
-    # def printResults(self):
-    #     result = {}
-    #     result['zpid'] = self.zpid
-    #     result['lastUpdated'] = self.lastUpdated
-    #     print(result)

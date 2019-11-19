@@ -2,8 +2,8 @@ from unittest import TestCase
 from unittest.mock import patch
 
 import src.main.services.zillow.api as GSR
-from src.main.classes.SearchResultClass import SearchResultClass
-from src.main.classes.SearchResults import SearchResults
+from src.main.classes.zillow.ZillowSearchResultClass import SearchResultClass
+from src.main.classes.zillow.ZillowSearchResults import SearchResults
 
 
 def mocked_requests_get(self, *args, **kwargs):
