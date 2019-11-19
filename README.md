@@ -1,13 +1,13 @@
 # RealEstateHelper
-This app is meant to simplify and streamline the real estate searching process whether it is buying, selling, analyzing or looking for places to rent.
+This tool is intended to streamline the real estate discovery process. This includes querying for optimal places to rent, buy, or flip.
 
-##Installation
+## Installation
 ```bash
-pip install --user --requirement requirements.txt
+pipenv install --three # installs requirements.txt and sets up environment
 ```
 
-##Usage
+## Usage
 ```bash
-./RealEstateHelper
+python app.py
 ```
 

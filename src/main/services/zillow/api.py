@@ -1,7 +1,6 @@
 import requests
 
-
-def getSearchResults(myParams):
+def zillowSearch(myParams):
 
     response = requests.post("https://ZillowdimashirokovV1.p.rapidapi.com/GetSearchResults.htm",
             headers={
