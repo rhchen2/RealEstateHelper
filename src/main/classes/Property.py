@@ -1,6 +1,7 @@
 import datetime
 from money import Money
 
+
 class GeoCoord:
     latitude = 0.0
     longitude = 0.0
@@ -33,31 +34,4 @@ class Property:
     def updatePrice(self, amount):
         self.currentPrice = Price(amount)
         self.priceHistory.append(self.currentPrice)
-
-class ZillowUnit(Property):
-    def __init__(self, 
-        zpid, zIndexValue,
-        homeDetailsURL, mapThisHomeURL, comparablesURL, 
-        localRealEstateOverviewURL, localRealEstateForSaleByOwnerURL, localRealEstateForSaleURL,
-        lowValuationRange, highValuationRange, regionName, regionId, regionType,
-        price, location
-    ):
-        self.zpid = zpid # zillow property id
-        self.zIndexValue = zIndexValue
-
-        self.homeDetailsURL = homeDetailsURL # ??
-        self.mapThisHomeURL = mapThisHomeURL # ??
-        self.comparablesURL = comparablesURL # ??
-        self.localRealEstateOverviewURL = localRealEstateOverviewURL
-        self.localRealEstateForSaleByOwnerURL = localRealEstateForSaleByOwnerURL
-        self.localRealEstateForSaleURL = localRealEstateForSaleURL
-
-        self.lowValuationRange = lowValuationRange
-        self.highValuationRange = highValuationRange
-
-        self.regionName = regionName
-        self.regionId = regionId
-        self.regionType = regionType
-
-        super().__init__(price, location)
 

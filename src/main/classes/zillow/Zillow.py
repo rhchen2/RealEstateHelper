@@ -1,6 +1,37 @@
+import datetime
+from money import Money
 from bs4 import BeautifulSoup
 from src.main.services.zillow.api import zillowSearch 
 from src.main.classes.Property import *
+from src.main.classes.zillow.Zillow import *
+
+
+class ZillowUnit(Property):
+    def __init__(self, 
+        zpid, zIndexValue,
+        homeDetailsURL, mapThisHomeURL, comparablesURL, 
+        localRealEstateOverviewURL, localRealEstateForSaleByOwnerURL, localRealEstateForSaleURL,
+        lowValuationRange, highValuationRange, regionName, regionId, regionType,
+        price, location
+    ):
+        self.zpid = zpid # zillow property id
+        self.zIndexValue = zIndexValue
+
+        self.homeDetailsURL = homeDetailsURL # ??
+        self.mapThisHomeURL = mapThisHomeURL # ??
+        self.comparablesURL = comparablesURL # ??
+        self.localRealEstateOverviewURL = localRealEstateOverviewURL
+        self.localRealEstateForSaleByOwnerURL = localRealEstateForSaleByOwnerURL
+        self.localRealEstateForSaleURL = localRealEstateForSaleURL
+
+        self.lowValuationRange = lowValuationRange
+        self.highValuationRange = highValuationRange
+
+        self.regionName = regionName
+        self.regionId = regionId
+        self.regionType = regionType
+
+        super().__init__(price, location)
 
 def search(zwsid, citystatezip, address):
     result = zillowSearch({
